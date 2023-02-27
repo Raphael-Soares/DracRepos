@@ -20,6 +20,12 @@ const Row = styled.div`
     height: 90vh;
 `;
 
+const Content = styled.main`
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+`;
+
 function App() {
     const [repos, setRepos] = useState([]);
 
@@ -36,12 +42,12 @@ function App() {
 
                 <Row>
                     <Sidebar repos={repos.map((repo) => ({ id: repo.id, name: repo.name }))} />
-                    <div>
+                    <Content>
                         <Routes>
                             <Route path="/:name" element={<Repository user={"Raphael-Soares"} />} />
                             <Route path="/" element={<div>Home</div>}></Route>
                         </Routes>
-                    </div>
+                    </Content>
                 </Row>
             </Container>
         </Router>

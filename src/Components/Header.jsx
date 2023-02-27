@@ -2,12 +2,17 @@ import React from "react";
 
 import styled from "styled-components";
 
-const Container = styled.div`
+const Container = styled.header`
+    width: 100%;
+
+    position: relative;
     background-color: #282a36;
     display: flex;
     height: 10vh;
     align-items: center;
     justify-content: center;
+
+    box-shadow: -2px -11px 20px 0px rgb(0 0 0 / 75%);
 `;
 
 const Title = styled.h1`
