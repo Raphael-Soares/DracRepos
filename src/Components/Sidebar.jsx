@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.section`
@@ -10,7 +10,7 @@ const Container = styled.section`
     background-color: #44475a;
 
     overflow-y: scroll;
-    color: #d0d3e3;
+    color: #ffffff;
 
     &::-webkit-scrollbar {
         width: 6px;
@@ -34,6 +34,8 @@ const Container = styled.section`
 
 const ItemContainer = styled.button`
     all: unset;
+    cursor: pointer;
+    color: #d0d3e3;
 
     padding: 20px 25px;
     margin: 5px;
@@ -46,9 +48,16 @@ const ItemContainer = styled.button`
 `;
 
 function Sidebar({ repos }) {
+    const Navigate = useNavigate();
+
     return (
         <Container>
-            {repos && repos.map((repo) => <ItemContainer key={repo.id}>{repo.name}</ItemContainer>)}
+            {repos &&
+                repos.map((repo) => (
+                    <ItemContainer key={repo.id} onClick={() => Navigate(repo.name)}>
+                        {repo.name}
+                    </ItemContainer>
+                ))}
         </Container>
     );
 }

@@ -5,6 +5,9 @@ import styled from "styled-components";
 import Header from "./Components/Header";
 import Sidebar from "./Components/Sidebar";
 
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Repository from "./Pages/Repository";
+
 const Container = styled.div`
     display: flex;
     flex-direction: column;
@@ -27,14 +30,21 @@ function App() {
     }, []);
 
     return (
-        <Container>
-            <Header />
+        <Router>
+            <Container>
+                <Header />
 
-            <Row>
-                <Sidebar repos={repos.map((repo) => ({ id: repo.id, name: repo.name }))} />
-                <div></div>
-            </Row>
-        </Container>
+                <Row>
+                    <Sidebar repos={repos.map((repo) => ({ id: repo.id, name: repo.name }))} />
+                    <div>
+                        <Routes>
+                            <Route path="/:name" element={<Repository user={"Raphael-Soares"} />} />
+                            <Route path="/" element={<div>Home</div>}></Route>
+                        </Routes>
+                    </div>
+                </Row>
+            </Container>
+        </Router>
     );
 }
 
